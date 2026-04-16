@@ -1,0 +1,38 @@
+package com.david.spring_boot_ecommerce_api.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.SecurityFilterChain;
+
+// Classe de configuração do Spring Security
+@Configuration
+public class SecurityConfig {
+
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        // Registra o encoder como bean para poder injetar no service
+        return new BCryptPasswordEncoder();
+    }
+
+    @Bean
+    public SecurityFilterChain securityFilterChain (HttpSecurity http) throws Exception {
+        http    // Como a autenticação será por JWT (stateless),
+                // não precisamos do CSRF padrão baseado em sessão/cookie.
+                .csrf(csrf -> csrf.disable())
+                // Stateless = o servidor não guarda sessão.
+                // Cada requisição precisa levar sua autenticação (o token).
+                .sessionManagement(session ->
+                        session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                // Tudo dentro de /auth é público:
+                // registro e login
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/auth/**").permitAll()
+                        // Qualquer outra rota exige autenticação
+                        .anyRequest().authenticated());
+        return http.build();
+    }
+
+}
