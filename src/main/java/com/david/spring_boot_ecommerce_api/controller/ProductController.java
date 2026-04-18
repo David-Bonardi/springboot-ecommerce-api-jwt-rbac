@@ -5,6 +5,7 @@ import com.david.spring_boot_ecommerce_api.dto.ProductResponse;
 import com.david.spring_boot_ecommerce_api.model.Product;
 import com.david.spring_boot_ecommerce_api.service.ProductService;
 import jakarta.validation.Valid;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,8 @@ public class ProductController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
+    //Só ADMIN pode criar produtos
     public ProductResponse create(@Valid @RequestBody CreateProductRequest request) {
         Product product = new Product();
         product.setName(request.getName());
@@ -45,6 +48,8 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    //Só ADMIN pode atualizar produtos
     public ProductResponse update(@PathVariable Long id, @Valid @RequestBody CreateProductRequest request){
         Product product = new Product();
         product.setName(request.getName());
@@ -56,6 +61,8 @@ public class ProductController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    //Só ADMIN pode deletar produtos
     public void delete(@PathVariable Long id){
         productService.delete(id);
     }

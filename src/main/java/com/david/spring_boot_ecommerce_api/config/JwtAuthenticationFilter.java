@@ -1,5 +1,6 @@
 package com.david.spring_boot_ecommerce_api.config;
 
+import com.david.spring_boot_ecommerce_api.model.User;
 import com.david.spring_boot_ecommerce_api.repository.UserRepository;
 import com.david.spring_boot_ecommerce_api.service.JwtService;
 import jakarta.servlet.FilterChain;
@@ -57,12 +58,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             var userOpt = userRepository.findByUsername(username);
 
             if (userOpt.isPresent() && jwtService.isTokenValid(token, username)) {
+                User user = userOpt.get();
+
+                // Constrói a role no formato que o Spring espera: ROLE_USER / ROLE_ADMIN
+                SimpleGrantedAuthority authority =
+                        new SimpleGrantedAuthority("ROLE_" + user.getRole().name());
                 //cria o objeto de autenticação
                 UsernamePasswordAuthenticationToken authToken =
                         new UsernamePasswordAuthenticationToken(
                                 username,
                                 null,
-                                List.of(new SimpleGrantedAuthority("ROLE_USER"))
+                                List.of(authority)
                         );
                 authToken.setDetails(
                         new WebAuthenticationDetailsSource().buildDetails(request)

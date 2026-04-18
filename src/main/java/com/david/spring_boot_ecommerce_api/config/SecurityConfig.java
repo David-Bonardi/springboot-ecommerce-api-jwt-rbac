@@ -7,9 +7,12 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 
 // Classe de configuração do Spring Security
 @Configuration
+// Habilita anotações como @PreAuthorize
+@EnableMethodSecurity
 public class SecurityConfig {
 
 
