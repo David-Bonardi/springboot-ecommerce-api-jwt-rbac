@@ -8,8 +8,6 @@ import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
 import io.jsonwebtoken.io.Decoders;
-import java.nio.charset.StandardCharsets;
-import java.util.Base64;
 import java.util.Date;
 
 // Service responsável por tudo que envolve JWT:
