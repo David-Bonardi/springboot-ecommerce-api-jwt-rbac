@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/auth")
-// Recebe JSON, converte para DTO, chama o service e devolve resposta.
+// Recebe JSON, converte para DTO, chama o service e devolve resposta
 public class AuthController {
 
     private UserService service;
@@ -25,8 +25,8 @@ public class AuthController {
     @PostMapping("/register")
     public String register(@Valid @RequestBody RegisterRequest request) {
         // DTO -> Entity
-        // O request representa o JSON de entrada.
-        // Aqui transformamos isso em um User da aplicação.
+        // O request representa o JSON de entrada
+        // Aqui transformamos isso em um User da aplicação
         User user = new  User();
         user.setUsername(request.getUsername());
         user.setPassword(request.getPassword());

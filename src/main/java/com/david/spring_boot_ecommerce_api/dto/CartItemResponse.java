@@ -7,15 +7,15 @@ public class CartItemResponse {
     private Long cartItemId;
     private Long productId;
     private String productName;
-    private Integer productQuantity;
-    private BigDecimal unityPrice;
+    private Integer quantity;
+    private BigDecimal unitPrice;
 
-    public CartItemResponse(Long cartItemId, String productName, Integer productQuantity, BigDecimal unityPrice, Long productId) {
+    public CartItemResponse(Long cartItemId, Long productId, String productName, Integer quantity, BigDecimal unitPrice) {
         this.cartItemId = cartItemId;
-        this.productName = productName;
-        this.productQuantity = productQuantity;
-        this.unityPrice = unityPrice;
         this.productId = productId;
+        this.productName = productName;
+        this.quantity = quantity;
+        this.unitPrice = unitPrice;
     }
 
     public Long getCartItemId() {
@@ -26,20 +26,20 @@ public class CartItemResponse {
         this.cartItemId = cartItemId;
     }
 
-    public BigDecimal getUnityPrice() {
-        return unityPrice;
+    public BigDecimal getUnitPrice() {
+        return unitPrice;
     }
 
-    public void setUnityPrice(BigDecimal unityPrice) {
-        this.unityPrice = unityPrice;
+    public void setUnitPrice(BigDecimal unityPrice) {
+        this.unitPrice = unityPrice;
     }
 
-    public Integer getProductQuantity() {
-        return productQuantity;
+    public Integer getQuantity() {
+        return quantity;
     }
 
-    public void setProductQuantity(Integer productQuantity) {
-        this.productQuantity = productQuantity;
+    public void setQuantity(Integer productQuantity) {
+        this.quantity = productQuantity;
     }
 
     public String getProductName() {

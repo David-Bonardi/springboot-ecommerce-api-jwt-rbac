@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 //vai ser usado para buscar os itens que pertencem a um pedido especifico
-public interface OrderItemRepository extends JpaRepository<Order, Long> {
+public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
     //busca todos os itens de um pedido
     List<OrderItem> findByOrder(Order order);
