@@ -152,8 +152,9 @@ Body:
  "quantity": 2
 }
 ```
+---
 
-🗄️ Banco de dados
+## 🗄️ Banco de dados
 
 Configurado para PostgreSQL.
 
@@ -169,7 +170,7 @@ DB_PASSWORD=sua_senha
 
 ---
 
-🧱 Estrutura do projeto
+## 🧱 Estrutura do projeto
 controller/   → camada HTTP
 service/      → regras de negócio
 repository/   → acesso ao banco
@@ -179,7 +180,7 @@ config/       → segurança (JWT, filtros)
 
 ---
 
-📌 Autor
+## 📌 Autor
 
 David Bonardi
 🔗 https://github.com/David-Bonardi
