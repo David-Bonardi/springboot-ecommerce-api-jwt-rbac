@@ -14,12 +14,12 @@ public class OrderResponse {
     private LocalDateTime createdAt;
     private List<OrderItemResponse> items;
 
-    public OrderResponse(Long orderId, List<OrderItemResponse> items, LocalDateTime createdAt, OrderStatus status, BigDecimal total) {
+    public OrderResponse(Long orderId, BigDecimal total, OrderStatus status, LocalDateTime createdAt, List<OrderItemResponse> items) {
         this.orderId = orderId;
-        this.items = items;
-        this.createdAt = createdAt;
-        this.status = status;
         this.total = total;
+        this.status = status;
+        this.createdAt = createdAt;
+        this.items = items;
     }
 
     public Long getOrderId() {
