@@ -9,11 +9,11 @@ public class OrderItemResponse {
     private Integer productQuantity;
     private BigDecimal priceAtPurchase;
 
-    public OrderItemResponse(Long productId, BigDecimal priceAtPurchase, Integer productQuantity, String productName) {
+    public OrderItemResponse(Long productId, String productName, Integer productQuantity, BigDecimal priceAtPurchase) {
         this.productId = productId;
-        this.priceAtPurchase = priceAtPurchase;
-        this.productQuantity = productQuantity;
         this.productName = productName;
+        this.productQuantity = productQuantity;
+        this.priceAtPurchase = priceAtPurchase;
     }
 
     public Long getProductId() {
