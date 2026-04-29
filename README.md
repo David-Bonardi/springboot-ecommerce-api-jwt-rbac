@@ -1,6 +1,6 @@
 # 🛒 Spring Boot E-commerce API
 
-API REST de e-commerce construída com Spring Boot, implementando autenticação com JWT, controle de acesso por roles (USER/ADMIN), gerenciamento de produtos e carrinho de compras.
+API REST de e-commerce construída com Spring Boot, implementando autenticação JWT, controle de acesso por roles, CRUD de produtos, carrinho de compras e fluxo de checkout com geração de pedidos.
 
 ---
 
@@ -13,6 +13,20 @@ Este projeto simula a base de um sistema de e-commerce real, incluindo:
 - CRUD de produtos
 - Gerenciamento de carrinho vinculado ao usuário autenticado
 - Estrutura em camadas seguindo boas práticas de arquitetura
+
+---
+## 🔐 Funcionalidades
+
+- Cadastro e login de usuários
+- Autenticação com JWT
+- Controle de acesso por roles (`USER` e `ADMIN`)
+- CRUD de produtos
+- Carrinho de compras vinculado ao usuário autenticado
+- Checkout do carrinho
+- Criação de pedidos com múltiplos itens
+- Cálculo automático do total do pedido
+- Atualização de estoque após checkout
+- Limpeza automática do carrinho após finalização do pedido
 
 ---
 
@@ -103,6 +117,13 @@ Authorization: Bearer SEU_TOKEN
 
 ---
 
+### 🧾 Orders
+
+- `POST /orders/checkout` → finaliza o carrinho e cria um pedido
+- `GET /orders` → lista os pedidos do usuário autenticado
+
+---
+
 ## 🧪 Como testar
 
 ### 1. Criar usuário
@@ -152,6 +173,17 @@ Body:
  "quantity": 2
 }
 ```
+---
+
+### 6. Finalizar pedido
+
+POST /orders/checkout
+
+---
+### 7. Listar pedidos
+
+GET /orders
+
 ---
 
 ## 🗄️ Banco de dados
