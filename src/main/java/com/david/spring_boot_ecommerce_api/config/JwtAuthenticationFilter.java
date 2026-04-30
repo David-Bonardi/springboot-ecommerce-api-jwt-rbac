@@ -36,6 +36,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
             FilterChain filterChain
     ) throws ServletException, IOException {
 
+
         //Pega o Header Authorization
         String authHeader = request.getHeader("Authorization");
 
